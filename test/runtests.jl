@@ -1,6 +1,7 @@
 using BitsGEMM
 using Test
+using TropicalNumbers, TropicalGEMM, LinearAlgebra
 
 @testset "BitsGEMM.jl" begin
-    # Write your tests here.
+    include("gemm.jl")
 end
