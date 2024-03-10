@@ -22,6 +22,7 @@ Base.getindex(x::Bits{T}, i::TI) where{T, TI <: Integer} = Bool((x.x >> (i - 1))
 Base.length(x::Bits) = sizeof(x.x) * 8
 Base.one(::Type{Bits{T}}) where{T} = Bits{T}(typemax(T))
 Base.zero(::Type{Bits{T}}) where{T} = Bits{T}(zero(T))
+Base.:&(x::Bits{T}, y::Bool) where{T} = Bits(T(x.x & y))
 
 function Bits2Bool(x::Bits)
     n = length(x)

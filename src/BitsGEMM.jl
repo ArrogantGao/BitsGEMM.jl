@@ -1,6 +1,6 @@
 module BitsGEMM
 
-using LinearAlgebra, TropicalNumbers
+using LinearAlgebra, TropicalNumbers, LoopVectorization
 export Bits, BitsU8, BitsU16, BitsU32, BitsU64, Bits2Bool, Bits2Tropical
 export masked_add, outer_prod!
 
