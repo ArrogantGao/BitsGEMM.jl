@@ -33,7 +33,7 @@ end
                         for jj in j:min(j + TN - 1, N)
                             b = B[kk, jj]
                             for l in 1:s
-                                mask = b[l]
+                                mask = b[s - l + 1]
                                 for ii in i:min(i + TM - 1, M)
                                     a = A[ii, kk]
                                     c = C[ii, (jj-1)*s+l]

@@ -16,8 +16,8 @@ Base.sizeof(::Type{Bits{T}}) where{T} = sizeof(T)
 
 Base.show(io::IO, t::Bits) = Base.print(io, "$(bitstring(t.x))")
 
-Base.:+(x::Bits{T}, y::Bits{T}) where{T} = Bits(x.x .| y.x)
-Base.:*(x::Bits{T}, y::Bits{T}) where{T} = Bits(x.x .& y.x)
+Base.:+(x::Bits{T}, y::Bits{T}) where{T} = Bits(x.x | y.x)
+Base.:*(x::Bits{T}, y::Bits{T}) where{T} = Bits(x.x & y.x)
 Base.getindex(x::Bits{T}, i::TI) where{T, TI <: Integer} = Bool((x.x >> (i - 1)) & true)
 Base.length(x::Bits) = sizeof(x.x) * 8
 Base.one(::Type{Bits{T}}) where{T} = Bits{T}(typemax(T))
