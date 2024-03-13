@@ -12,6 +12,14 @@
     return c
 end
 
+@inbounds function matmul_core!(c::AbstractArray{Bits{T}, 1}, a::AbstractArray{Bits{T}, 1}, b::AbstractArray{Bits{T}, 1}) where{T <: Unsigned}
+    n = length(a)
+    for i in 1:n
+        outer_prod!(c, a[i], b[i])
+    end
+    return c
+end
+
 # here we simply assume that C is column-major, A is column-major, and B is row-major
 @inbounds function Bits_matmul!(C::AbstractMatrix{Bits{T}}, A::AbstractMatrix{Bits{T}}, B::AbstractMatrix{Bits{T}}, α::Bool, β::Bool, TM, TN, TK) where{T <: Unsigned}
     M, N = size(A, 1), size(B, 2)
